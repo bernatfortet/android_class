@@ -1,0 +1,83 @@
+package com.fortuna.todoapp;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.apache.commons.io.FileUtils;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+
+public class TodoActivity extends Activity {
+	
+	private ArrayList<String> todoItems;
+	private ArrayAdapter<String> arrayTodoAdapter;
+	private ListView listViewItems;
+	private EditText editNewItem;
+	
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_todo);
+        editNewItem = (EditText) findViewById(R.id.editNewItem);
+        
+        listViewItems = (ListView) findViewById(R.id.listViewItems);
+        populateArrayItems();
+        arrayTodoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoItems);
+        listViewItems.setAdapter(arrayTodoAdapter);
+        setupListViewListener();
+    }
+    
+    private void setupListViewListener() {
+		listViewItems.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> adapter, View item,
+					int pos, long id) {
+				todoItems.remove(pos);
+				arrayTodoAdapter.notifyDataSetChanged();
+				return false;
+			}
+			
+		});
+		
+	}
+
+	public void onAddItem(View v){
+    	String itemText = editNewItem.getText().toString();
+    	arrayTodoAdapter.add(itemText);
+    	editNewItem.setText("");
+    	
+    }
+
+	private void populateArrayItems() {
+		todoItems = new ArrayList<String>();
+		todoItems.add("Item 1");
+		todoItems.add("Item 2");
+	}
+	
+	private void readItems(){
+		File filesDir = getFilesDir();
+		File todoFile = new File(filesDir, "todo.txt");
+		try {
+			todoItems = new ArrayList<String>(FileUtils.readLines(todoFile));
+		} catch (IOException){
+			todoItems = new ArrayList<String>();
+		}
+		
+		
+	}
+	
+	private void writeItems(){
+		
+	}
+	
+}
