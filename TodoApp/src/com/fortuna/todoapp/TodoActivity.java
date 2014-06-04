@@ -66,14 +66,22 @@ public class TodoActivity extends Activity {
 		
 	}
     
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-    	Toast.makeText(this, "here", Toast.LENGTH_LONG);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){    	
     	if( resultCode == RESULT_OK && requestCode == REQUEST_CODE){
     		String itemText = data.getExtras().getString("editedItemText");
-    		Toast.makeText(this, itemText, Toast.LENGTH_LONG);
+    		Integer itemPositionInArray = data.getExtras().getInt("editedItemPosition");
+    		
+    		editItem(itemPositionInArray, itemText);
     		
     	}
     }
+
+	private void editItem(int itemPosition, String itemText) {
+		todoItems.set(itemPosition, itemText);
+		arrayTodoAdapter.notifyDataSetChanged();
+		writeItems();
+		
+	}
 
 	public void onAddItem(View v){
     	String itemText = editNewItem.getText().toString();

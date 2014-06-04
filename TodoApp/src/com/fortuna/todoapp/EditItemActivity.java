@@ -11,6 +11,7 @@ import android.widget.EditText;
 public class EditItemActivity extends Activity {
 	
 	private EditText editedItem; 
+	private Integer itemPositionInArray;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,26 +21,28 @@ public class EditItemActivity extends Activity {
 		editedItem = (EditText) findViewById(R.id.edited_item_multiText);
 		getDataFromIntent();
 		
-		showKeyboard();
-		
+		showKeyboard(editedItem);
 	}
 
-	private void showKeyboard() {
-		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-		editedItem.requestFocus();
-		imm.showSoftInput(editedItem, InputMethodManager.SHOW_FORCED);
+	public void showKeyboard(View view){
+	    if(view.requestFocus()){
+	        InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+	        imm.showSoftInput(view,InputMethodManager.SHOW_IMPLICIT);
+	    }
 	}
 
 	private void getDataFromIntent() {
 		String itemText = getIntent().getStringExtra("itemText");
-		Integer itemPosition = getIntent().getIntExtra("itemPosition", 0);
+		itemPositionInArray = getIntent().getIntExtra("itemPosition", 0);
 		
 		setInputField(itemText);
 	}
 	
 	public void onSubmit(View v) {
 		Intent intent= new Intent();
-		intent.putExtra("editedItemText", editedItem.getText());
+		intent.putExtra("editedItemText", editedItem.getText().toString());
+		intent.putExtra("editedItemPosition", itemPositionInArray);
+		
 		setResult(RESULT_OK, intent);
 		finish();
 	}
