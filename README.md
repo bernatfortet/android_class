@@ -18,7 +18,7 @@ Completed user stories:
  * [x] (Optional) Improve the user interface and experience by using images and/or colors
  
  
- ![Screenshot](TipCalculator/tipCalulator-screenshot.png)
+ ![Screenshot](TipCalculator/tipCalulator-screenshot.png =350x)
  ![Video Walkthrough](TipCalculator/tipCalulator-video.gif)
  
 
