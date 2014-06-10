@@ -18,7 +18,9 @@ Completed user stories:
  * [x] (Optional) Improve the user interface and experience by using images and/or colors
  
  
- ![Screenshot](tipCalulator-screenshot.png)
- ![Video Walkthrough](tipCalulator-video.gif)
+ ![Screenshot](TipCalculator/tipCalulator-screenshot.png)
+ ![Video Walkthrough](TipCalculator/tipCalulator-video.gif)
  
+
+https://github.com/thecodepath/android-rottentomatoes-demo/raw/submission/anim_rotten_tomatoes.gif
  
