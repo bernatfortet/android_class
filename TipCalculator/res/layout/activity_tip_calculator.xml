@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/calculatedTip"
+        style="@style/DinBig"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/centerShim"
+        android:layout_centerHorizontal="true"
+        android:background="#4F29A9"
+        android:gravity="center"
+        android:text="asdf"
+         />
+    
+    <TextView
+        android:id="@+id/calculatedTipLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_centerHorizontal="true"
+        android:text="Calculated Tip"
+        android:textColor="#957FCB"
+        android:textSize="33sp" />
+    
+    <View 
+        android:id="@+id/centerShim"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"/>
+    
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/centerShim"
+        android:gravity="center"
+        style="@style/DinBig"
+        android:text="$50" >
+        
+    </TextView>
+    
+	<!-- Tip Buttons -->>    
+
+    <TextView
+        android:id="@+id/tip10"
+        style="@style/TipButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tip15"
+        android:layout_marginRight="40dp"
+        android:layout_toLeftOf="@+id/tip15"
+        android:text="10%" />
+
+    <TextView
+        android:id="@+id/tip15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/totalPrice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        style="@style/TipButton"
+        android:text="15%" />
+
+    <TextView
+        android:id="@+id/tip20"
+        style="@style/TipButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tip15"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/tip15"
+        android:text="20%" />
+
+</RelativeLayout>
