@@ -9,4 +9,6 @@
 <fullyQualifiedTypeName name="com.fortuna.todoapp.R.id"/>
 <fullyQualifiedTypeName name="android.view.View"/>
 <fullyQualifiedTypeName name="android.widget.AdapterView.OnItemLongClickListener"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="com.fortuna.tipcalculator.R.string"/>
 </qualifiedTypeNameHistroy>
